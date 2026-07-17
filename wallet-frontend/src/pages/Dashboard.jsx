@@ -1,8 +1,9 @@
+import Navbar from "../components/Navbar";
 import { Navigate } from "react-router-dom";
 import { useWallet } from "../context/WalletContext";
-
 function Dashboard() {
   const { wallet } = useWallet();
+  console.log("Dashboard wallet:", wallet);
 
   // If no wallet exists, go back to home
   if (!wallet) {
@@ -10,31 +11,32 @@ function Dashboard() {
   }
 
   return (
-    <div className="container">
-      <h1>💼 Dashboard</h1>
+  <>
+    <Navbar />
 
-      <h2>Mnemonic</h2>
+    <div style={{ padding: "40px" }}>
+      <h1>Dashboard</h1>
+
+      <h3>Mnemonic</h3>
       <p>{wallet.mnemonic}</p>
 
       <hr />
 
-      <h2>Ethereum</h2>
+      <h3>Ethereum</h3>
       <p><strong>Address:</strong> {wallet.ethereum.address}</p>
-      <p><strong>Balance:</strong> 0 ETH</p>
 
       <hr />
 
-      <h2>Bitcoin</h2>
+      <h3>Bitcoin</h3>
       <p><strong>Address:</strong> {wallet.bitcoin.address}</p>
-      <p><strong>Balance:</strong> 0 BTC</p>
 
       <hr />
 
-      <h2>Solana</h2>
+      <h3>Solana</h3>
       <p><strong>Address:</strong> {wallet.solana.address}</p>
-      <p><strong>Balance:</strong> 0 SOL</p>
     </div>
-  );
+  </>
+);
 }
 
 export default Dashboard;

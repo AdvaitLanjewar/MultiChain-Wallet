@@ -1,26 +1,44 @@
-const handleCreateWallet = async () => {
-  try {
-    console.log("Calling backend...");
+import { useNavigate } from "react-router-dom";
+import { useWallet } from "../context/WalletContext";
+import API from "../services/api";
 
-    const response = await API.get("/generate-wallet");
+function CreateWallet() {
+  const navigate = useNavigate();
+  const { setWallet } = useWallet();
 
-    console.log("Response:", response);
+  const handleCreateWallet = async () => {
+    try {
+      console.log("Calling backend...");
 
-    console.log("Data:", response.data);
+      const response = await API.get("/generate-wallet");
 
-    setWallet(response.data);
+      console.log(response.data);
 
-    console.log("Wallet saved.");
+      setWallet(response.data);
 
-    navigate("/dashboard");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to generate wallet.");
+    }
+  };
 
-  } catch (error) {
-    console.log("FULL ERROR:", error);
+  return (
+    <div className="container">
+      <h1>🚀 Create New Wallet</h1>
 
-    console.log("Response:", error.response);
+      <p>
+        Generate a secure Ethereum, Bitcoin and Solana wallet with one click.
+      </p>
 
-    console.log("Message:", error.message);
+      <button
+        className="generate-btn"
+        onClick={handleCreateWallet}
+      >
+        Generate Wallet
+      </button>
+    </div>
+  );
+}
 
-    alert("Failed to generate wallet.");
-  }
-};
+export default CreateWallet;

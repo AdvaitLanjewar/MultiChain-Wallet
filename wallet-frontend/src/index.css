@@ -1,90 +1,42 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:70px;
+    background:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    border-bottom:1px solid #2b3445;
 }
 
-body{
-background:#0f172a;
-color:white;
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:white;
 }
 
-.home{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+.search-box{
+    display:flex;
+    align-items:center;
+    background:#1F2937;
+    padding:10px 15px;
+    border-radius:12px;
+    width:350px;
 }
 
-.hero{
-text-align:center;
-max-width:700px;
+.search-box input{
+    border:none;
+    outline:none;
+    background:transparent;
+    color:white;
+    margin-left:10px;
+    width:100%;
 }
 
-.hero h1{
-font-size:60px;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:22px;
-color:#cbd5e1;
-line-height:35px;
-margin-bottom:40px;
-}
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-}
-
-.primary-btn,
-.secondary-btn{
-
-display:flex;
-align-items:center;
-gap:10px;
-
-padding:15px 30px;
-
-border:none;
-
-border-radius:12px;
-
-font-size:18px;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.primary-btn{
-
-background:#2563eb;
-
-color:white;
-
-}
-
-.primary-btn:hover{
-
-background:#1d4ed8;
-
-}
-
-.secondary-btn{
-
-background:#1e293b;
-
-color:white;
-
-}
-
-.secondary-btn:hover{
-
-background:#334155;
-
+.nav-icons{
+    display:flex;
+    gap:20px;
+    color:white;
+    cursor:pointer;
 }
