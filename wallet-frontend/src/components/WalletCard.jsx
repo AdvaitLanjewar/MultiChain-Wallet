@@ -1,12 +1,22 @@
 import { Copy } from "lucide-react";
+import { Copy, Check } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 function WalletCard({ title, symbol, address }) {
 
-  const copyAddress = () => {
-    navigator.clipboard.writeText(address);
-    alert("Address copied!");
-  };
+ const [copied, setCopied] = useState(false);
 
+const copyAddress = async () => {
+  await navigator.clipboard.writeText(address);
+
+  setCopied(true);
+  toast.success(`${title} address copied!`);
+
+  setTimeout(() => {
+    setCopied(false);
+  }, 2000);
+};
   return (
     <div className="wallet-card">
 
@@ -19,10 +29,9 @@ function WalletCard({ title, symbol, address }) {
       </p>
 
       <button onClick={copyAddress}>
-        <Copy size={18} />
-        Copy
-      </button>
-
+  {copied ? <Check size={18} /> : <Copy size={18} />}
+  {copied ? " Copied" : " Copy"}
+</button>
     </div>
   );
 }

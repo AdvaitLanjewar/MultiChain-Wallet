@@ -3,6 +3,7 @@ import WalletCard from "../components/WalletCard";
 import { Navigate } from "react-router-dom";
 import { useWallet } from "../context/WalletContext";
 import { useState } from "react";
+import QRCodeModal from "../components/QRCodeModal";
 function Dashboard() {
   const [showMnemonic, setShowMnemonic] = useState(false);
   const { wallet } = useWallet();
@@ -40,6 +41,7 @@ function Dashboard() {
             symbol="SOL"
             address={wallet.solana.address}
           />
+          <QRCodeModal address={wallet.ethereum.address} />
 
         </div>
 <div className="wallet-card">
