@@ -2,8 +2,9 @@ import Navbar from "../components/Navbar";
 import WalletCard from "../components/WalletCard";
 import { Navigate } from "react-router-dom";
 import { useWallet } from "../context/WalletContext";
-
+import { useState } from "react";
 function Dashboard() {
+  const [showMnemonic, setShowMnemonic] = useState(false);
   const { wallet } = useWallet();
 
   if (!wallet) {
@@ -41,7 +42,17 @@ function Dashboard() {
           />
 
         </div>
+<div className="wallet-card">
+  <h2>Recovery Phrase</h2>
 
+  <button onClick={() => setShowMnemonic(!showMnemonic)}>
+    {showMnemonic ? "Hide" : "Show"} Recovery Phrase
+  </button>
+
+  {showMnemonic && (
+    <p className="address">{wallet.mnemonic}</p>
+  )}
+</div>
       </div>
     </>
   );
