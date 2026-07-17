@@ -1,0 +1,25 @@
+========================================================================
+✅ Generated 12-Word Mnemonic Phrase:
+else away suggest mountain cycle zoo secret chicken eager unaware party october
+========================================================================
+
+--- Ethereum ---
+Derivation Path:    m/44'/60'/0'/0/0
+Private Key:        0xa845afae8903af9b5661d68893452c92559a1a66a0f01959fb63cb3f40664e5b
+Public Key:         0x03a3f661d220994a63c56eb6dab8609731191e46114771b789aedb9c4e8f9cf249
+Address:            0xb8f0ae965072B560cAFAf33aAe7d42996Bf67494
+
+--- Bitcoin ---
+Derivation Path:    m/44'/0'/0'/0/0
+Private Key (WIF):  L36noyfwXf1TnD5Eq4HuKQCsoMb2vEqr59d714jewuQ7tEd7KiAw
+Public Key:         02ccb402d2da20128c608f02e99311af92fc0891cc5af8a9ceb8bb8b96bfbe8cb5
+Address:            14WsZuEmxfXaDqXX1nr351XcJAphhFmYth
+
+--- Solana ---
+Derivation Path:    m/44'/501'/0'/0'
+Private Key (Base58): 5vBDHxDFLP5RgBcph9wvPK3o78SdsUFGcXuT2RdcFcn8ZoDLg32732aa3suthyh44m1nuf1yGfFzPxbrfV261FY3
+Public Key:         FcL29tjDtQwbG6PBaLXeLKMWACrGJzHj5RMUdKnR6vRd
+Address:            FcL29tjDtQwbG6PBaLXeLKMWACrGJzHj5RMUdKnR6vRd
+
+========================================================================
+✅ Wallet generation complete.
