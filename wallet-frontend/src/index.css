@@ -40,3 +40,48 @@
     color:white;
     cursor:pointer;
 }
+.dashboard {
+  padding: 40px;
+  background: #f4f7fb;
+  min-height: 100vh;
+}
+
+.dashboard-title {
+  margin-bottom: 30px;
+}
+
+.wallet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.wallet-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.wallet-card h2 {
+  margin-bottom: 8px;
+}
+
+.wallet-card .address {
+  word-break: break-all;
+  color: #555;
+  margin: 20px 0;
+}
+
+.wallet-card button {
+  padding: 10px 16px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.wallet-card button:hover {
+  background: #1d4ed8;
+}

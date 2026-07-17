@@ -1,42 +1,50 @@
 import Navbar from "../components/Navbar";
+import WalletCard from "../components/WalletCard";
 import { Navigate } from "react-router-dom";
 import { useWallet } from "../context/WalletContext";
+
 function Dashboard() {
   const { wallet } = useWallet();
-  console.log("Dashboard wallet:", wallet);
 
-  // If no wallet exists, go back to home
   if (!wallet) {
     return <Navigate to="/" />;
   }
 
   return (
-  <>
-    <Navbar />
+    <>
+      <Navbar />
 
-    <div style={{ padding: "40px" }}>
-      <h1>Dashboard</h1>
+      <div className="dashboard">
 
-      <h3>Mnemonic</h3>
-      <p>{wallet.mnemonic}</p>
+        <h1 className="dashboard-title">
+          Welcome 👋
+        </h1>
 
-      <hr />
+        <div className="wallet-grid">
 
-      <h3>Ethereum</h3>
-      <p><strong>Address:</strong> {wallet.ethereum.address}</p>
+          <WalletCard
+            title="Ethereum"
+            symbol="ETH"
+            address={wallet.ethereum.address}
+          />
 
-      <hr />
+          <WalletCard
+            title="Bitcoin"
+            symbol="BTC"
+            address={wallet.bitcoin.address}
+          />
 
-      <h3>Bitcoin</h3>
-      <p><strong>Address:</strong> {wallet.bitcoin.address}</p>
+          <WalletCard
+            title="Solana"
+            symbol="SOL"
+            address={wallet.solana.address}
+          />
 
-      <hr />
+        </div>
 
-      <h3>Solana</h3>
-      <p><strong>Address:</strong> {wallet.solana.address}</p>
-    </div>
-  </>
-);
+      </div>
+    </>
+  );
 }
 
 export default Dashboard;
