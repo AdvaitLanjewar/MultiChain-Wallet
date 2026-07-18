@@ -1,35 +1,48 @@
-const { ethers } = require("ethers");
+const {
+  JsonRpcProvider,
+  Wallet,
+  parseEther,
+  isAddress,
+} = require("ethers");
 
-async function sendTransactionWithProvider(privateKey, to, amount) {
-  // Create provider using GetBlock
- const provider = new ethers.JsonRpcProvider(
-  process.env.ETH_RPC_URL
-);
-  
-  // Create wallet connected to provider
-  const wallet = new ethers.Wallet(privateKey, provider);
-  
-  try {
-    // Send transaction (ethers handles nonce, gas price, gas Limit, sign etc.)
-    const tx = await wallet.sendTransaction({
-      to: to,
-      value: ethers.parseEther(amount)
-    });
-    
-    console.log('Transaction sent:', tx.hash);
-    
-    // Wait for confirmation
-    const receipt = await tx.wait();
-    console.log('Transaction confirmed in block:', receipt.blockNumber);
-    
-    return tx.hash;
-  } catch (error) {
-    console.error('Transaction failed:', error);
-    throw error;
+const provider = new JsonRpcProvider(process.env.ETH_RPC_URL);
+
+/**
+ * Send ETH Transaction
+ */
+async function sendEthereumTransaction(privateKey, to, amount) {
+  if (!privateKey) {
+    throw new Error("Private key is required");
   }
+
+  if (!isAddress(to)) {
+    throw new Error("Invalid receiver address");
+  }
+
+  if (Number(amount) <= 0) {
+    throw new Error("Amount must be greater than zero");
+  }
+
+  const wallet = new Wallet(privateKey, provider);
+
+  const tx = await wallet.sendTransaction({
+    to,
+    value: parseEther(amount.toString()),
+  });
+
+  const receipt = await tx.wait();
+
+  return {
+    success: true,
+    hash: receipt.hash,
+    blockNumber: receipt.blockNumber,
+    from: receipt.from,
+    to: receipt.to,
+    amount,
+    explorer: `https://etherscan.io/tx/${receipt.hash}`,
+  };
 }
 
-
 module.exports = {
-  sendTransactionWithProvider,
+  sendEthereumTransaction,
 };

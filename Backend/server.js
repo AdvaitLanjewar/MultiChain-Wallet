@@ -9,6 +9,7 @@ const cors = require("cors");
 
 const { generateWallet } = require("./services/walletService");
 const balanceRoutes = require("./routes/balanceRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
 
 const app = express();
 
@@ -21,6 +22,9 @@ app.use(express.json());
 // Balance Routes
 app.use("/balance", balanceRoutes);
 
+// Transaction Routes
+app.use("/transaction", transactionRoutes);
+
 // Home Route
 app.get("/", (req, res) => {
   res.send("Blockchain Wallet Backend Running...");
@@ -30,11 +34,8 @@ app.get("/", (req, res) => {
 app.get("/generate-wallet", async (req, res) => {
   try {
     const wallet = await generateWallet();
-
     res.json(wallet);
-
   } catch (error) {
-
     console.error(error);
 
     res.status(500).json({
