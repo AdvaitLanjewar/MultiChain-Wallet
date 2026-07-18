@@ -2,6 +2,10 @@ const {
   sendEthereumTransaction,
 } = require("../services/ethereumService");
 
+const {
+  sendSolanaTransaction,
+} = require("../services/solanaService");
+
 exports.sendTransaction = async (req, res) => {
   try {
     const { chain, privateKey, to, amount } = req.body;
@@ -24,6 +28,14 @@ exports.sendTransaction = async (req, res) => {
         );
         break;
 
+      case "solana":
+        result = await sendSolanaTransaction(
+          privateKey,
+          to,
+          amount
+        );
+        break;
+
       default:
         return res.status(400).json({
           success: false,
@@ -34,7 +46,6 @@ exports.sendTransaction = async (req, res) => {
     res.json(result);
 
   } catch (err) {
-
     console.error(err);
 
     res.status(500).json({
