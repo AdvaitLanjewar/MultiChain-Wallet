@@ -2,7 +2,9 @@ const { ethers } = require("ethers");
 
 async function sendTransactionWithProvider(privateKey, to, amount) {
   // Create provider using GetBlock
-  const provider = new ethers.JsonRpcProvider(`https://shared.ap-southeast-1.getblock.io/ff253b2407d743729003ba75fd9d12f0`);
+ const provider = new ethers.JsonRpcProvider(
+  process.env.ETH_RPC_URL
+);
   
   // Create wallet connected to provider
   const wallet = new ethers.Wallet(privateKey, provider);
@@ -28,4 +30,6 @@ async function sendTransactionWithProvider(privateKey, to, amount) {
 }
 
 
-sendTransactionWithProvider("0xa845afae8903af9b5661d68893452c92559a1a66a0f01959fb63cb3f40664e5b","0x4c9730aCa1af4C2AA2145f835A08Db139bD7E3f6","0.0000001771250");
+module.exports = {
+  sendTransactionWithProvider,
+};
