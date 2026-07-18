@@ -1,3 +1,4 @@
+const { getBitcoinBalance } = require("../services/bitcoinService");
 const {
   getEthereumBalance,
   getSolanaBalance,
@@ -23,6 +24,10 @@ exports.getBalance = async (req, res) => {
 
       case "solana":
         balance = await getSolanaBalance(address);
+        break;
+
+      case "bitcoin":
+        balance = await getBitcoinBalance(address);
         break;
 
       default:
