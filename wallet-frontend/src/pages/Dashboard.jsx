@@ -2,11 +2,37 @@ import Navbar from "../components/Navbar";
 import WalletCard from "../components/WalletCard";
 import { Navigate } from "react-router-dom";
 import { useWallet } from "../context/WalletContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QRCodeModal from "../components/QRCodeModal";
+import { getCryptoPrices } from "../services/priceService";
+import { getBalances } from "../services/balanceService";
 function Dashboard() {
   const [showMnemonic, setShowMnemonic] = useState(false);
   const { wallet } = useWallet();
+  const [balances, setBalances] = useState({
+  ethereum: "...",
+  bitcoin: "...",
+  solana: "...",
+});
+
+const [prices, setPrices] = useState({
+  ethereum: 0,
+  bitcoin: 0,
+  solana: 0,
+});
+useEffect(() => {
+  async function loadData() {
+    const balanceData = await getBalances(wallet);
+    setBalances(balanceData);
+
+    const priceData = await getCryptoPrices();
+    setPrices(priceData);
+  }
+
+  if (wallet) {
+    loadData();
+  }
+}, [wallet]);
 
   if (!wallet) {
     return <Navigate to="/" />;
@@ -25,22 +51,28 @@ function Dashboard() {
         <div className="wallet-grid">
 
           <WalletCard
-            title="Ethereum"
-            symbol="ETH"
-            address={wallet.ethereum.address}
+          title="Ethereum"
+          symbol="ETH"
+          address={wallet.ethereum.address}
+           balance={balances.ethereum}
+          price={prices.ethereum}
           />
 
           <WalletCard
             title="Bitcoin"
-            symbol="BTC"
-            address={wallet.bitcoin.address}
-          />
+             symbol="BTC"
+             address={wallet.bitcoin.address}
+             balance={balances.bitcoin}
+            price={prices.bitcoin}
+            />
 
           <WalletCard
-            title="Solana"
-            symbol="SOL"
-            address={wallet.solana.address}
-          />
+           title="Solana"
+           symbol="SOL"
+           address={wallet.solana.address}
+            balance={balances.solana}
+           price={prices.solana}
+/>
           <QRCodeModal address={wallet.ethereum.address} />
 
         </div>

@@ -1,3 +1,4 @@
+const errorHandler = require("./middleware/errorHandler");
 const path = require("path");
 
 require("dotenv").config({
@@ -30,20 +31,17 @@ app.get("/", (req, res) => {
   res.send("Blockchain Wallet Backend Running...");
 });
 
+
 // Wallet Generation
 app.get("/generate-wallet", async (req, res) => {
   try {
     const wallet = await generateWallet();
     res.json(wallet);
-  } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
+  } catch (err) {
+  next(err);
+}
 });
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

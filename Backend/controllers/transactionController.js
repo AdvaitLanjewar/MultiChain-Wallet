@@ -10,12 +10,7 @@ exports.sendTransaction = async (req, res) => {
   try {
     const { chain, privateKey, to, amount } = req.body;
 
-    if (!chain || !privateKey || !to || !amount) {
-      return res.status(400).json({
-        success: false,
-        message: "Missing required fields",
-      });
-    }
+    
 
     let result;
 
