@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Send, Download, ShoppingBag, PieChart, History, Settings, LogOut, Wallet, ShieldCheck } from "lucide-react";
+import { Home as HomeIcon, LayoutDashboard, Send, Download, ShoppingBag, PieChart, History, Settings, LogOut, Wallet, ShieldCheck } from "lucide-react";
 import { useWallet } from "../context/WalletContext";
 import toast from "react-hot-toast";
 
@@ -15,14 +15,17 @@ function Navbar() {
   };
 
   const navItems = [
-    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-    { name: "Portfolio", path: "/portfolio", icon: PieChart },
-    { name: "Send", path: "/send", icon: Send },
-    { name: "Receive", path: "/receive", icon: Download },
-    { name: "Buy", path: "/buy", icon: ShoppingBag },
-    { name: "Transactions", path: "/transactions", icon: History },
-    { name: "Settings", path: "/settings", icon: Settings },
+    { name: "Home", path: "/", icon: HomeIcon, alwaysShow: true },
+    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard, requiresWallet: true },
+    { name: "Portfolio", path: "/portfolio", icon: PieChart, requiresWallet: true },
+    { name: "Send", path: "/send", icon: Send, requiresWallet: true },
+    { name: "Receive", path: "/receive", icon: Download, requiresWallet: true },
+    { name: "Buy", path: "/buy", icon: ShoppingBag, requiresWallet: true },
+    { name: "Transactions", path: "/transactions", icon: History, requiresWallet: true },
+    { name: "Settings", path: "/settings", icon: Settings, requiresWallet: true },
   ];
+
+  const visibleNavItems = navItems.filter(item => item.alwaysShow || (wallet && item.requiresWallet));
 
   return (
     <nav className="navbar">
@@ -46,7 +49,7 @@ function Navbar() {
       </div>
 
       <div className="nav-links">
-        {navItems.map((item) => {
+        {visibleNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
           return (
@@ -63,7 +66,7 @@ function Navbar() {
       </div>
 
       <div className="nav-actions">
-        <div className="network-badge" title="Connected to Blockchain Mainnet">
+        <div className="network-badge" title="Connected to Multi-Chain Mainnet">
           <span className="network-dot"></span>
           <span>Mainnet</span>
         </div>

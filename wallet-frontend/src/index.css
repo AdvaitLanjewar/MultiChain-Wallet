@@ -253,505 +253,101 @@ body {
   margin-bottom: 24px;
 }
 
-.card-header {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.card-header p {
-  color: var(--text-muted);
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-.card-icon {
-  color: var(--primary);
-  margin-bottom: 12px;
-}
-
-/* ================= WALLET & PORTFOLIO CARDS ================= */
-.portfolio-hero-card {
-  background: linear-gradient(135deg, rgba(24, 30, 48, 0.85) 0%, rgba(15, 20, 34, 0.95) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: 24px;
-  padding: 32px;
-  margin-bottom: 28px;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.1);
-  position: relative;
-}
-
-.portfolio-hero-card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.portfolio-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.portfolio-label {
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.portfolio-amount {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: -1px;
-  margin: 8px 0 12px 0;
-  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.badge-24h {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.badge-24h.positive {
-  background: rgba(16, 185, 129, 0.12);
-  color: #34D399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.badge-24h.negative {
-  background: rgba(244, 63, 94, 0.12);
-  color: #FB7185;
-  border: 1px solid rgba(244, 63, 94, 0.3);
-}
-
-.action-buttons-group {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
-}
-
-.action-btn.primary {
-  background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
-  border: none;
-  color: white;
-  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
-}
-
-.action-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.45);
-}
-
-.action-btn:hover:not(.primary) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.wallet-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-.crypto-card {
-  position: relative;
-  border-radius: 20px;
-  padding: 24px;
-  background: rgba(18, 24, 38, 0.65);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.crypto-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 35px -10px rgba(0, 0, 0, 0.5);
-}
-
-.crypto-card.eth:hover { border-color: rgba(98, 126, 234, 0.5); box-shadow: 0 16px 35px -10px var(--accent-eth-glow); }
-.crypto-card.btc:hover { border-color: rgba(247, 147, 26, 0.5); box-shadow: 0 16px 35px -10px var(--accent-btc-glow); }
-.crypto-card.sol:hover { border-color: rgba(20, 241, 149, 0.5); box-shadow: 0 16px 35px -10px var(--accent-sol-glow); }
-
-.crypto-card-top {
+/* ================= SETTINGS & BUY CRYPTO SPECIFIC STYLES ================= */
+.setting-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.asset-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.setting-item-row:last-child {
+  border-bottom: none;
 }
 
-.asset-icon-wrapper {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-}
-
-.asset-icon-wrapper.eth { background: rgba(98, 126, 234, 0.15); color: #829AFA; border: 1px solid rgba(98, 126, 234, 0.3); }
-.asset-icon-wrapper.btc { background: rgba(247, 147, 26, 0.15); color: #F7931A; border: 1px solid rgba(247, 147, 26, 0.3); }
-.asset-icon-wrapper.sol { background: rgba(20, 241, 149, 0.15); color: #14F195; border: 1px solid rgba(20, 241, 149, 0.3); }
-
-.asset-names h3 {
-  font-size: 17px;
+.setting-label-box h4 {
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-main);
 }
 
-.asset-symbol {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-}
-
-.crypto-balance-box {
-  margin-bottom: 20px;
-}
-
-.crypto-balance-val {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.crypto-usd-val {
-  font-size: 14px;
-  font-weight: 600;
+.setting-label-box p {
+  font-size: 12.5px;
   color: var(--text-muted);
   margin-top: 2px;
 }
 
-.crypto-card-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+/* Toggle Switch Component */
+.switch-toggle-label {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
 }
 
-.address-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 6px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  font-family: monospace;
-  font-size: 12.5px;
-  color: #94A3B8;
+.switch-toggle-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* ================= BUTTONS ================= */
-.copy-btn-component {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 6px 12px;
-  border-radius: 8px;
+.switch-slider {
+  position: absolute;
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.copy-btn-component:hover {
-  background: rgba(139, 92, 246, 0.15);
-  border-color: rgba(139, 92, 246, 0.4);
-  color: #C084FC;
-}
-
-.copy-btn-component.copied {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(16, 185, 129, 0.4);
-  color: #34D399;
-}
-
-.primary-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 14.5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 15px var(--primary-glow);
-}
-
-.primary-btn:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
-}
-
-.full-width {
-  width: 100%;
-}
-
-.secondary-btn, .secondary-btn-sm {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 8px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 13px;
-  transition: all 0.2s ease;
+  transition: .3s;
+  border-radius: 34px;
 }
 
-.secondary-btn:hover, .secondary-btn-sm:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
 }
 
-.spin {
-  animation: spin-icon 1s linear infinite;
+input:checked + .switch-slider {
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
-@keyframes spin-icon {
-  100% { transform: rotate(360deg); }
+input:checked + .switch-slider:before {
+  transform: translateX(22px);
 }
 
-/* ================= GRID LAYOUT ================= */
-.dashboard-grid-2 {
+/* Fiat Preset Buttons */
+.fiat-preset-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-@media (max-width: 960px) {
-  .dashboard-grid-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ================= RECENT ACTIVITY WIDGET ================= */
-.widget-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.widget-title-row h3 {
-  font-size: 18px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tx-mini-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tx-mini-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  transition: all 0.2s ease;
-}
-
-.tx-mini-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.tx-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tx-icon-box.receive { background: rgba(16, 185, 129, 0.15); color: #34D399; }
-.tx-icon-box.send { background: rgba(244, 63, 94, 0.15); color: #FB7185; }
-
-.tx-meta h4 {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.tx-meta p {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.tx-amount-col {
-  text-align: right;
-}
-
-.tx-amount-col .val {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.tx-amount-col .val.green { color: #34D399; }
-
-/* ================= RECOVERY PHRASE CARD ================= */
-.recovery-phrase-card {
-  border-color: rgba(245, 158, 11, 0.25);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(18, 24, 38, 0.7) 100%);
-}
-
-.security-warning-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 13px;
-  color: #FCD34D;
-}
-
-.words-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 16px;
-}
-
-@media (max-width: 500px) {
-  .words-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.word-chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-color);
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-family: monospace;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+  margin-top: 10px;
 }
 
-.word-num {
-  color: var(--text-dim);
-  font-size: 11px;
-  user-select: none;
-}
-
-.word-val {
-  color: #F8FAFC;
-  font-weight: 600;
-}
-
-/* ================= QR CODE CARD ================= */
-.qr-tabs {
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 4px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 20px;
-}
-
-.qr-tab-btn {
-  flex: 1;
+.fiat-preset-chip {
   padding: 8px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 13px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
 }
 
-.qr-tab-btn.active {
-  background: var(--primary);
-  color: white;
-  box-shadow: 0 2px 10px var(--primary-glow);
-}
-
-.qr-box-inner {
-  background: white;
-  padding: 16px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  margin: 0 auto 20px auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+.fiat-preset-chip:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #F8FAFC;
 }
 
 /* Backward compatibility for remaining app pages */
