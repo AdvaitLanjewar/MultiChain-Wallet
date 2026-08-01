@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Send, Download, ArrowRightLeft, ShoppingBag, PieChart, History, Settings, LogOut, Wallet } from "lucide-react";
+import { LayoutDashboard, Send, Download, ShoppingBag, PieChart, History, Settings, LogOut, Wallet, ShieldCheck } from "lucide-react";
 import { useWallet } from "../context/WalletContext";
 import toast from "react-hot-toast";
 
@@ -10,7 +10,7 @@ function Navbar() {
 
   const handleLogout = () => {
     logoutWallet();
-    toast.success("Wallet disconnected");
+    toast.success("Wallet disconnected successfully");
     navigate("/");
   };
 
@@ -26,9 +26,23 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="nav-brand" onClick={() => navigate("/dashboard")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>
-        <Wallet className="brand-icon" size={24} />
-        <span className="brand-name">MultiChain Wallet</span>
+      <div 
+        className="nav-brand" 
+        onClick={() => navigate(wallet ? "/dashboard" : "/")} 
+        style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "10px" }}
+      >
+        <div style={{
+          background: "linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.2))",
+          padding: "8px",
+          borderRadius: "12px",
+          border: "1px solid rgba(168, 85, 247, 0.3)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}>
+          <Wallet className="brand-icon" size={22} />
+        </div>
+        <span className="brand-name">NEXUS WALLET</span>
       </div>
 
       <div className="nav-links">
@@ -49,14 +63,20 @@ function Navbar() {
       </div>
 
       <div className="nav-actions">
+        <div className="network-badge" title="Connected to Blockchain Mainnet">
+          <span className="network-dot"></span>
+          <span>Mainnet</span>
+        </div>
+
         {wallet ? (
           <button className="logout-btn" onClick={handleLogout} title="Disconnect Wallet">
-            <LogOut size={16} />
+            <LogOut size={15} />
             <span>Disconnect</span>
           </button>
         ) : (
-          <button className="primary-btn-sm" onClick={() => navigate("/create-wallet")}>
-            Connect
+          <button className="primary-btn" style={{ padding: "8px 16px", fontSize: "13px" }} onClick={() => navigate("/create-wallet")}>
+            <ShieldCheck size={16} />
+            <span>Connect Wallet</span>
           </button>
         )}
       </div>
@@ -64,4 +84,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navbar;
